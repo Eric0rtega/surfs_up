@@ -36,7 +36,7 @@ Using Python, Pandas functions and methods, and SQLAlchemy, you’ll filter the 
 - Determine the Summary Statistics for December
 - A written report for the statistical analysis
 
-To provide a further analysis I would not only look into temperatures but also weather conditions maybe create a table or dictionary of those data correlations. I would also run furher queries on January Temperatures and also a query for temperatures of all the years each individually and as a whole. I believe that would really seal the deal if there is any missin peices or even if there are some hidden faults in the original analysis that we did not catch because we did not analyze enough.
+To provide a further analysis I would not only look into temperatures but also weather conditions maybe create a table or dictionary of those data correlations. I would also run further queries on January Temperatures and also a query for temperatures of all the years each individually and as a whole. I believe that would really seal the deal to determine if there are any missing pieces or if there were some hidden faults in the original analysis that we did not catch because we did not analyze enough.
 
 ### Results
 ![June Temperatures Description](june_temps.png)
@@ -45,3 +45,17 @@ To provide a further analysis I would not only look into temperatures but also w
 As shown in the images above, the average temperatures do not differ much but of only about 4 degrees. The difference in the total count of temperatures between both data sets may or may not be a huge contributing factor to the average temperatures. If both counts were even, would it create a significant drop in the average of temperatures or bring them closer together.
 
 The min temperatures differ the most between both data sets. Maybe it would be best to create bins for the ranges of temperatures and sort the data that way. We can then generate the counts of the data by temperature ranges and get a clearer idea on how many days of the year do we have good weather and how many days do we have bad weather.
+
+### Other Scripts
+These are other scripts I would include for a further analysis:
+
+all_jan_temps = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date.like('%%%%-01-%%')).all()
+print(all_jan_temps)
+
+all_years_temps = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date.like('%%%%-%%-%%')).all()
+print(all_years_temps)
+
+for a single year:
+
+single_year_temps = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date.like('2017-%%-%%')).all()
+print(single_year_temps)
